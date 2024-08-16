@@ -8,7 +8,22 @@ struct queue
 struct queue *rear,*traverse;//global struct queue pointers
 void Display(struct queue *front)//function to display elements in Queue
 {
-
+    if(front == NULL)
+        printf("Queue is EMPTY!!!\n");
+    else
+    {
+        traverse=front;
+        printf("%d|%d(front)-->",traverse->data,traverse->next);
+        traverse=traverse->next;
+        while(traverse != NULL)
+        {
+            if(traverse->next == NULL)
+                printf("%d|%d(rear)",traverse->data,traverse->next);
+            else
+                printf("%d|%d-->",traverse->data,traverse->next);
+            traverse=traverse->next;
+        }
+    }
 }
 struct queue *create_node()
 {
@@ -20,11 +35,30 @@ struct queue *create_node()
 }
 struct queue *enqueue(struct queue *front)//function to insert element in Queue
 {
-
+    rear=create_node();
+    rear->next = NULL;
+    if(front == NULL)
+        front = rear;
+    else
+    {
+        traverse=front;
+        while(traverse->next != NULL)//traversing queue until it reaches last element
+            traverse=traverse->next;
+        traverse->next=rear;//inserting new element 
+    }
+    return front;
 }
 struct queue *dequeue(struct queue *front)//function to delete element in Queue
 {
-
+    if(front == NULL)
+        return front;
+    else
+    {
+        rear=front;//copying front address to rear
+        front=front->next;//switching the starting node
+        free(rear);//freeing the previous front memory(starting node)
+        return front;
+    }
 }
 int main()
 {
@@ -38,20 +72,20 @@ int main()
         switch(a)
         {
             case 1:
-                front=enqueue(front);
+                front=enqueue(front);//updating front during element insertion
                 Display(front);
                 break;
             case 2:
-                front=dequeue(front);
+                front=dequeue(front);//updating front during element insertion
                 Display(front);
                 break;
             case 3:
-                Display(front);
+                Display(front);//displaying queue elements
                 break;
             default:
                 printf("INVALID CHOICE!!!\n");
         }
-        printf("Do you want to Continue(Y/N): ");
+        printf("\nDo you want to Continue(Y/N): ");
         scanf(" %c",&ch);
     } while (ch == 'Y' || ch == 'y');
     return 0;
