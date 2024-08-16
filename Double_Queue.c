@@ -39,16 +39,19 @@ struct deque *push_rear(struct deque *front)
 }
 struct deque *pop_front(struct deque *front)
 {
-
+    if(front == NULL)
+        return front;
+    else
+    {
+        rear=front;
+        front=front->next;
+        free(rear);
+        return front;
+    }
 }
 struct deque *pop_rear(struct deque *front)
 {
-    if(front == NULL)
-        return front;
-    else if(front->next == NULL)
-    {
-        
-    }
+
 }
 int main()
 {
