@@ -5,22 +5,28 @@ struct queue
     int data;
     struct queue *next;
 };
-struct queue *new_node,*traverse;//global struct queue pointers
+struct queue *rear,*traverse;//global struct queue pointers
 struct queue *create_node()
 {
-    struct queue *new_node;
-    new_node = (struct queue *)malloc(sizeof(struct queue));//allocating memory for new_node insertion
+    struct queue *rear;
+    rear = (struct queue *)malloc(sizeof(struct queue));//allocating memory for new_node insertion
     printf("Enter the data to insert(queue): ");
-    scanf("%d",&new_node->data);
-    return new_node;
+    scanf("%d",&rear->data);
+    return rear;
+}
+struct queue *enqueue(struct queue *front)
+{
+
 }
 int main()
 {
     int a;//switch variable
     char ch;//loop condition variable
-    struct queue *start = NULL;
+    struct queue *front = NULL;//starting node connecting other nodes
     do
     {
+        printf("1.Enqueue\n2.Dequeue\n3.Display\nEnter your choice : ");
+        scanf("%d",&a);
         switch(a)
         {
 
