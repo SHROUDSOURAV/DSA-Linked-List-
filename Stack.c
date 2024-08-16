@@ -9,7 +9,7 @@ struct stack *new_node,*traverse;//global struct stack type pointers
 struct stack *create_node()//allocating memory using malloc() for new_node insertion
 {
     struct stack *new_node;
-    new_node = (struct stack *)malloc(sizeof(struct stack));
+    new_node = (struct stack *)malloc(sizeof(struct stack));//typecasting since malloc returns void *pointer
     printf("Enter the data to insert(stack) : ");
     scanf("%d",&new_node->data);
     return new_node;
