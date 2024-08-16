@@ -8,9 +8,24 @@ struct deque
 struct deque *rear,*traverse;
 void Display(struct deque *front)
 {
-
+    if(front == NULL)
+        printf("Deque is EMPTY!!!\n");
+    else
+    {
+        traverse=front;
+        printf("%d|%d(front)-->",traverse->data,traverse->next);
+        traverse=traverse->next;
+        while(traverse != NULL)
+        {
+            if(traverse->next == NULL)
+                printf("%d|%d(rear)",traverse->data,traverse->next);
+            else
+                printf("%d|%d-->",traverse->data,traverse->next);
+            traverse=traverse->next;
+        }
+    }
 }
-struct dqueue *create_node()
+struct deque *create_node()
 {
     struct deque *rear;
     rear = (struct deque *)malloc(sizeof(struct deque));
@@ -20,7 +35,7 @@ struct dqueue *create_node()
 }
 struct deque *push_front(struct deque *front)
 {
-    rear=create_node;
+    rear=create_node();
     if(front == NULL)
     {
         rear->next=NULL;
@@ -62,7 +77,23 @@ struct deque *pop_front(struct deque *front)
 }
 struct deque *pop_rear(struct deque *front)
 {
-
+    if(front == NULL)
+        return front;
+    else if(front->next == NULL)
+    {
+        rear=front;
+        front=NULL;
+    }
+    else
+    {
+        traverse=front;
+        while(traverse->next->next != NULL)
+            traverse=traverse->next;
+        rear=traverse->next;
+        traverse->next=NULL;
+    }
+    free(rear);
+    return front;
 }
 int main()
 {
