@@ -9,7 +9,7 @@ int main()
     printf("Enter the size of Array : ");
     scanf("%d",&n);
 
-    ptr = (int *)malloc(n*(sizeof(int)));//dynamically allocate memory for n number for elements in array
+    ptr = (int *)malloc(n*(sizeof(int)));//dynamically allocate memory for n number of elements in array
     if(ptr == NULL)
     {
         printf("Memory Allocation Failed!!!\n");
