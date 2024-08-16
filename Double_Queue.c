@@ -20,7 +20,18 @@ struct dqueue *create_node()
 }
 struct deque *push_front(struct deque *front)
 {
-
+    rear=create_node;
+    if(front == NULL)
+    {
+        rear->next=NULL;
+        front=rear;
+    }
+    else
+    {
+        rear->next=front;
+        front=rear;
+    }
+    return front;
 }
 struct deque *push_rear(struct deque *front)
 {
