@@ -17,10 +17,11 @@ struct stack *create_node()//allocating memory using malloc() for new_node inser
 void Display(struct stack *start)//display stack elements
 {
     if(start == NULL)
-        printf("Stack is EMPTY!!!\n");
+        return;
     else
     {
-        
+        Display(start->next);
+        printf("%d\n",start->data);
     }
 } 
 struct stack *Push(struct stack *start)//function to insert/push element in stack
