@@ -5,7 +5,7 @@ struct stack
     int data;//containing stack elements
     struct stack *next;//points to address of next stack element
 };
-struct stack *new_node,*traverse;//global struct type pointer nodes
+struct stack *new_node,*traverse;//global struct stack type pointers
 struct stack *create_node()
 {
     struct stack *new_node;
@@ -20,7 +20,7 @@ void Display(struct stack *start)//display stack elements
         printf("Stack is EMPTY!!!\n");
     else
     {
-        
+
     }
 } 
 struct stack *Push(struct stack *start)//function to insert/push element in stack
