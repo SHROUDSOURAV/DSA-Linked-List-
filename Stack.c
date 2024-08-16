@@ -79,13 +79,8 @@ int main()
         switch(a)
         {
             case 1:
-                if(Check(start) == 1)
-                {
-                    start=Push(start);//updating starting node to make changes in linked list(stack)
-                    Display(start);
-                }
-                else
-                    printf("Stack is EMPTY!!!\n");
+                start=Push(start);//updating starting node to make changes in linked list(stack)
+                Display(start);
                 break;
             case 2:
                 if(Check(start) == 1)
