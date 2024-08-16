@@ -20,7 +20,7 @@ void Display(struct stack *start)//display stack elements
         printf("Stack is EMPTY!!!\n");
     else
     {
-
+        
     }
 } 
 struct stack *Push(struct stack *start)//function to insert/push element in stack
