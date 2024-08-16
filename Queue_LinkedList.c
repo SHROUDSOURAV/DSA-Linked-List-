@@ -6,6 +6,10 @@ struct queue
     struct queue *next;
 };
 struct queue *rear,*traverse;//global struct queue pointers
+void Display(struct queue *front)//function to display elements in Queue
+{
+
+}
 struct queue *create_node()
 {
     struct queue *rear;
@@ -14,7 +18,11 @@ struct queue *create_node()
     scanf("%d",&rear->data);
     return rear;
 }
-struct queue *enqueue(struct queue *front)
+struct queue *enqueue(struct queue *front)//function to insert element in Queue
+{
+
+}
+struct queue *dequeue(struct queue *front)//function to delete element in Queue
 {
 
 }
@@ -29,7 +37,19 @@ int main()
         scanf("%d",&a);
         switch(a)
         {
-
+            case 1:
+                front=enqueue(front);
+                Display(front);
+                break;
+            case 2:
+                front=dequeue(front);
+                Display(front);
+                break;
+            case 3:
+                Display(front);
+                break;
+            default:
+                printf("INVALID CHOICE!!!\n");
         }
         printf("Do you want to Continue(Y/N): ");
         scanf(" %c",&ch);
