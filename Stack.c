@@ -97,7 +97,10 @@ int main()
                     printf("Stack is EMPTY!!!\n");
                 break;
             case 3:
-                Display(start);//display stack
+                if(Check(start) == 1)
+                    Display(start);//display stack
+                else
+                    printf("Stack is EMPTY!!!\n");
                 break;
             default:
                 printf("INVALID CHOICE\n");
