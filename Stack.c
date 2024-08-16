@@ -14,7 +14,14 @@ struct stack *create_node()//allocating memory using malloc() for new_node inser
     scanf("%d",&new_node->data);
     return new_node;
 }
-void Display(struct stack *start)//display stack elements
+int Check(struct stack *start)//function to check whether stack is empty or not
+{
+    if(start == NULL)
+        return 0;
+    else 
+        return 1;
+}
+void Display(struct stack *start)//display stack elements in reverse order(like stack)
 {
     if(start == NULL)
         return;
@@ -72,12 +79,22 @@ int main()
         switch(a)
         {
             case 1:
-                start=Push(start);//updating starting node to make changes in linked list(stack)
-                Display(start);
+                if(Check(start) == 1)
+                {
+                    start=Push(start);//updating starting node to make changes in linked list(stack)
+                    Display(start);
+                }
+                else
+                    printf("Stack is EMPTY!!!\n");
                 break;
             case 2:
-                start=Pop(start);//updating starting node to make changes in linked list(stack)
-                Display(start);
+                if(Check(start) == 1)
+                {
+                    start=Pop(start);//updating starting node to make changes in linked list(stack)
+                    Display(start);
+                }
+                else
+                    printf("Stack is EMPTY!!!\n");
                 break;
             case 3:
                 Display(start);//display stack
