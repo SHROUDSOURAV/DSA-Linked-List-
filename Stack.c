@@ -85,7 +85,7 @@ int main()
             default:
                 printf("INVALID CHOICE\n");
         }
-        pritnf("Do you want to Continue(Y/N): ");
+        printf("Do you want to Continue(Y/N): ");
         scanf(" %c",&ch);
     } while (ch == 'Y' || ch == 'y');
     return 0;
