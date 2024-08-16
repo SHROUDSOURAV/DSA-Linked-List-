@@ -28,7 +28,7 @@ void Display(struct stack *start)//display stack elements in reverse order(like 
     else
     {
         Display(start->next);
-        printf("%d\n",start->data);
+        printf("%d-->SP\n",start->data);
     }
 } 
 struct stack *Push(struct stack *start)//function to insert/push element in stack
