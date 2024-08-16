@@ -10,6 +10,12 @@ int main()
     scanf("%d",&n);
 
     ptr = (int *)malloc(n*(sizeof(int)));//dynamically allocate memory for n number for elements in array
+    if(ptr == NULL)
+    {
+        printf("Memory Allocation Failed!!!\n");
+        exit(0);
+    }
+    printf("Memory Allocation Sucessful\n\n");
     printf("Enter array elements :\n");
     for(i=0;i<n;i++)
         scanf("%d",&ptr[i]);//inputting array elements using scanf() fucntion
