@@ -6,7 +6,7 @@ struct stack
     struct stack *next;//points to address of next stack element
 };
 struct stack *new_node,*traverse;//global struct stack type pointers
-struct stack *create_node()
+struct stack *create_node()//allocating memory using malloc() for new_node insertion
 {
     struct stack *new_node;
     new_node = (struct stack *)malloc(sizeof(struct stack));
