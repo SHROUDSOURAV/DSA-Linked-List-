@@ -14,7 +14,7 @@ struct stack *create_node()//allocating memory using malloc() for new_node inser
     scanf("%d",&new_node->data);
     return new_node;
 }
-int Check(struct stack *start)//function to check whether stack is empty or not
+int Check_Empty(struct stack *start)//function to check whether stack is empty or not
 {
     if(start == NULL)
         return 0;
@@ -83,7 +83,7 @@ int main()
                 Display(start);
                 break;
             case 2:
-                if(Check(start) == 1)
+                if(Check_Empty(start) == 1)
                 {
                     start=Pop(start);//updating starting node to make changes in linked list(stack)
                     Display(start);
@@ -92,7 +92,7 @@ int main()
                     printf("Stack is EMPTY!!!\n");
                 break;
             case 3:
-                if(Check(start) == 1)
+                if(Check_Empty(start) == 1)
                     Display(start);//display stack
                 else
                     printf("Stack is EMPTY!!!\n");
