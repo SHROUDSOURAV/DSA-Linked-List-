@@ -5,8 +5,8 @@ struct deque
     int data;
     struct deque *next;
 };
-struct deque *rear,*traverse;
-void Display(struct deque *front)
+struct deque *rear,*traverse;//global struct deque pointers
+void Display(struct deque *front)//function to display deque elements
 {
     if(front == NULL)
         printf("Deque is EMPTY!!!\n");
@@ -25,15 +25,15 @@ void Display(struct deque *front)
         }
     }
 }
-struct deque *create_node()
+struct deque *create_node()//function to create_node
 {
     struct deque *rear;
-    rear = (struct deque *)malloc(sizeof(struct deque));
+    rear = (struct deque *)malloc(sizeof(struct deque));//allocate memory for element insertion
     printf("Enter the data (dqueue): ");
     scanf("%d",&rear->data);
     return rear;
 }
-struct deque *push_front(struct deque *front)
+struct deque *push_front(struct deque *front)//function to insert elements from front positon
 {
     rear=create_node();
     if(front == NULL)
@@ -48,7 +48,7 @@ struct deque *push_front(struct deque *front)
     }
     return front;
 }
-struct deque *push_rear(struct deque *front)
+struct deque *push_rear(struct deque *front)//function to insert elements from rear position
 {
     rear = create_node();
     rear->next = NULL;
@@ -63,7 +63,7 @@ struct deque *push_rear(struct deque *front)
     }
     return front;
 }
-struct deque *pop_front(struct deque *front)
+struct deque *pop_front(struct deque *front)//function to delete elements from front position
 {
     if(front == NULL)
         return front;
@@ -71,11 +71,11 @@ struct deque *pop_front(struct deque *front)
     {
         rear=front;
         front=front->next;
-        free(rear);
+        free(rear);//freeing the memory allocated to the node to delete
         return front;
     }
 }
-struct deque *pop_rear(struct deque *front)
+struct deque *pop_rear(struct deque *front)//function to delete elements from rear position
 {
     if(front == NULL)
         return front;
@@ -92,14 +92,14 @@ struct deque *pop_rear(struct deque *front)
         rear=traverse->next;
         traverse->next=NULL;
     }
-    free(rear);
+    free(rear);//freeing the memory allocated to the node to delete
     return front;
 }
 int main()
 {
-    int a;
-    char ch;
-    struct deque *front = NULL;
+    int a;//switch variable
+    char ch;//loop variable
+    struct deque *front = NULL;//starting node to connect other nodes/elements in deque
     do
     {
         printf("1.Push_Front\n2.Push_Rear\n3.Pop_Front\n4.Pop_Rear\n5.Display\nEnter your choice : ");
