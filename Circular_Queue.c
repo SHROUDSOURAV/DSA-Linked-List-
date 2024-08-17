@@ -65,8 +65,8 @@ struct Cqueue *dequeue(struct Cqueue *front)
         rear=traverse=front;
         while(traverse->next != front)
             traverse=traverse->next;
+        traverse->next=front->next;
         front=front->next;
-        traverse->next=front;
     }
     free(rear);
     return front;
