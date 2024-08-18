@@ -5,8 +5,8 @@ struct Cqueue
     int data;
     struct Cqueue *next;
 };
-struct Cqueue *rear,*traverse;
-void Display(struct Cqueue *front)
+struct Cqueue *rear,*traverse;//global struct Cqueue pointers
+void Display(struct Cqueue *front)//function to display elements in Circular Queue
 {
     if(front == NULL)
         printf("Circular Queue is EMPTY!!!\n");
@@ -25,15 +25,15 @@ void Display(struct Cqueue *front)
         }
     }
 }
-struct Cqueue *create_node()
+struct Cqueue *create_node()//function to create memory space for element insertion in Circular Queue
 {
     struct Cqueue *rear;
-    rear = (struct Cqueue *)malloc(sizeof(struct Cqueue));
+    rear = (struct Cqueue *)malloc(sizeof(struct Cqueue));//allocate memory to insert elements
     printf("Enter the data to insert(Cqueue):");
     scanf("%d",&rear->data);
     return rear;
 }
-struct Cqueue *enqueue(struct Cqueue *front)
+struct Cqueue *enqueue(struct Cqueue *front)//function to insert elements in Circular Queue and traverse
 {
     rear = create_node();
     if(front == NULL)
@@ -51,7 +51,7 @@ struct Cqueue *enqueue(struct Cqueue *front)
     }
     return front;
 }
-struct Cqueue *dequeue(struct Cqueue *front)
+struct Cqueue *dequeue(struct Cqueue *front)//function to delete elements in Circular Queue 
 {
     if(front == NULL)
         return front;
@@ -73,9 +73,9 @@ struct Cqueue *dequeue(struct Cqueue *front)
 }
 int main()
 {
-    int a;
-    char ch;
-    struct Cqueue *front = NULL;
+    int a;//switch variable
+    char ch;//loop variable
+    struct Cqueue *front = NULL;//head node connecting other nodes
     do
     {
         printf("1.Enqueue\n2.Dequeue\n3.Display\nEnter your choice : ");
