@@ -1,4 +1,4 @@
-#include<stdio.h>
+#include<stdio.h>//NOTE: I have only reversed the linked list using recursion. The original list is unaffected.
 #include<stdlib.h>
 struct node 
 {
