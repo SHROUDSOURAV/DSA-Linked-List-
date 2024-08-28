@@ -7,7 +7,7 @@ struct node
     struct node *next;
 };
 struct node *new_node,*traverse;
-void Display(struct node *head)
+void Display(struct node *head)//function to display list elements
 {
     if(head == NULL)
         printf("LIST IS EMPTY!!!\n");
@@ -24,7 +24,7 @@ void Display(struct node *head)
         }
     }
 }
-struct node *create_node()
+struct node *create_node()//allocate memory for node insertion
 {
     struct node *new_node;
     new_node = (struct node *)malloc(sizeof(struct node));
@@ -32,7 +32,7 @@ struct node *create_node()
     scanf("%d",&new_node->data);
     return new_node;
 }
-struct node *create_list(struct node *head)
+struct node *create_list(struct node *head)//function to create the linked list and traverse
 {
     new_node = create_node();
     new_node->next = NULL;
@@ -51,12 +51,28 @@ struct node *create_list(struct node *head)
     }
     return head;
 }
-struct node *new_node,*traverse;
+struct node *Infa(struct node *head)//function to insert element at the beginning of the list
+{
+    new_node = create_node();
+    new_node->prev = NULL;
+    if(head == NULL)
+    {
+        new_node->next = NULL;
+        head = new_node;
+    }
+    else
+    {
+        new_node->next = head;
+        head->prev = new_node;
+        head = new_node;
+    }
+    return head;
+}
 int main()
 {
-    int a;
-    char ch;
-    struct node *head = NULL;
+    int a;//switch variable
+    char ch;//loop variable
+    struct node *head = NULL;//head node/starting node connecting other nodes
     do
     {
         printf("1.Create\n");
@@ -72,6 +88,10 @@ int main()
         {
             case 1:
                 head = create_list(head);
+                Display(head);
+                break;
+            case 2:
+                head = Infa(head);
                 Display(head);
                 break;
             case 8:
