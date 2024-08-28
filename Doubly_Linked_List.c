@@ -68,7 +68,7 @@ struct node *Infa(struct node *head)//function to insert element at the beginnin
     }
     return head;
 }
-struct node *Delfa(struct node *head)
+struct node *Delfa(struct node *head)//function to delete element from the head node/starting position
 {
     if(head == NULL)
         return head;
@@ -85,7 +85,7 @@ struct node *Delfa(struct node *head)
     free(new_node);
     return head;
 }
-struct node *Della(struct node *head)
+struct node *Della(struct node *head)//function to delete the last node/last element of the list
 {
     if(head == NULL)
         return head;
