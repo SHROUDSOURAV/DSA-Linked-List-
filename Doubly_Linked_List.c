@@ -68,6 +68,43 @@ struct node *Infa(struct node *head)//function to insert element at the beginnin
     }
     return head;
 }
+struct node *Delfa(struct node *head)
+{
+    if(head == NULL)
+        return head;
+    else if(head->next == NULL)
+    {
+        new_node = head;
+        head = NULL;
+    }
+    else
+    {
+        new_node = head;
+        head = head->next;
+    }
+    free(new_node);
+    return head;
+}
+struct node *Della(struct node *head)
+{
+    if(head == NULL)
+        return head;
+    else if(head->next == NULL)
+    {
+        new_node = head;
+        head = NULL;
+    }
+    else
+    {
+        traverse = head;
+        while(traverse->next->next != NULL)
+            traverse = traverse->next;
+        new_node = traverse->next;
+        traverse->next = NULL;
+    }
+    free(new_node);
+    return head;
+}
 int main()
 {
     int a;//switch variable
@@ -92,6 +129,18 @@ int main()
                 break;
             case 2:
                 head = Infa(head);
+                Display(head);
+                break;
+            case 3:
+                head = create_list(head);
+                Display(head);
+                break;
+            case 4:
+                head = Delfa(head);
+                Display(head);
+                break;
+            case 5:
+                head = Della(head);
                 Display(head);
                 break;
             case 8:
