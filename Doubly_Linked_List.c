@@ -24,6 +24,23 @@ void Display(struct node *head)//function to display list elements
         }
     }
 }
+int Count(struct node *head)//function to count the number of nodes in the list
+{
+    int c=0;
+    if(head == NULL)
+        return c;
+    else
+    {
+        c++;
+        traverse = head;
+        while(traverse->next != NULL)
+        {
+            c++;
+            traverse = traverse->next;
+        }
+        return c;
+    }
+}
 struct node *create_node()//allocate memory for node insertion
 {
     struct node *new_node;
@@ -105,6 +122,35 @@ struct node *Della(struct node *head)//function to delete the last node/last ele
     free(new_node);
     return head;
 }
+struct node *Inpo(struct node *head)//function to insert node at user specified position in the list
+{
+    int position,count = 0;
+    printf("Enter the position : ");
+    scanf("%d",&position);
+    if(position <= 0 || position > (Count(head)+1))
+        return head;
+    else if(position == 1)
+        return Infa(head);
+    else if(position == (Count(head)+1))
+        return create_list(head);
+    else
+    {
+        count++;
+        traverse = head;
+        while(count < position-1)
+        {
+            count++;
+            traverse = traverse->next;
+        }
+        new_node = create_node();
+        new_node->next = traverse->next;
+        traverse->next = new_node;
+        new_node->prev = traverse;
+        traverse = new_node->next;
+        traverse->prev = new_node;
+        return head;
+    }
+}
 int main()
 {
     int a;//switch variable
@@ -141,6 +187,10 @@ int main()
                 break;
             case 5:
                 head = Della(head);
+                Display(head);
+                break;
+            case 6:
+                head = Inpo(head);
                 Display(head);
                 break;
             case 8:
