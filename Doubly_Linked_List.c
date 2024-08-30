@@ -128,7 +128,10 @@ struct node *Inpo(struct node *head)//function to insert node at user specified 
     printf("Enter the position : ");
     scanf("%d",&position);
     if(position <= 0 || position > (Count(head)+1))
+    {
+        printf("INVALID POSITION!!!\n");
         return head;
+    }
     else if(position == 1)
         return Infa(head);
     else if(position == (Count(head)+1))
