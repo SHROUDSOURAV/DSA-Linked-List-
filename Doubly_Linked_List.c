@@ -154,6 +154,40 @@ struct node *Inpo(struct node *head)//function to insert node at user specified 
         return head;
     }
 }
+struct node *Delpo(struct node *head)
+{
+    int position,c=0;
+    struct node *trav2;//local struct node pointer
+    if(head == NULL)
+        return head;
+    printf("Enter the position : ");
+    scanf("%d",&position);
+    if(position <=0 || position > Count(head))
+    {
+        printf("INVALID POSITION!!!\n");
+        return head;
+    }
+    else if(position == 1)
+        return Delfa(head);
+    else if(position == Count(head))
+        return Della(head);
+    else
+    {
+        c++;
+        traverse = head;
+        while(c < position - 1)
+        {
+            c++;
+            traverse = traverse->next;
+        }
+        new_node = traverse->next;
+        traverse->next = new_node->next;
+        trav2 = new_node->next;
+        trav2->prev = traverse;//after delete changing previous node location
+        free(new_node);
+        return head;
+    }
+}
 int main()
 {
     int a;//switch variable
@@ -194,6 +228,10 @@ int main()
                 break;
             case 6:
                 head = Inpo(head);
+                Display(head);
+                break;
+            case 7:
+                head = Delpo(head);
                 Display(head);
                 break;
             case 8:
