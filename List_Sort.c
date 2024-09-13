@@ -109,14 +109,3 @@ int main()
     } while (ch == 'y' || ch == 'Y');
     return 0;
 }
-/*  while(trav->next->next != NULL)
-    {
-        if(trav->data > trav->next->data)
-        {
-            temp = trav->data;
-            trav->data = trav->next->data;
-            trav->next->data = temp;
-        }
-        trav = trav->next;
-    }
-*/
