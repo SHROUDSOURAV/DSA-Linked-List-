@@ -64,9 +64,9 @@ struct node *Merge(struct node *head1,struct node *head2,struct node *head3)
 }
 int main()
 {
-    int a;
-    char ch;
-    struct node *head1 = NULL;struct node *head2 = NULL;struct node *head3 = NULL;
+    int a;//switch variable
+    char ch;//loop variable
+    struct node *head1 = NULL;struct node *head2 = NULL;struct node *head3 = NULL;//list1 list2 list3 head nodes
     do
     {
         printf("1.Create List1\n2.Create List2\n3.Merge List3\n4.Display List1\n5.Display List2\n6.Display List3\nEnter your choice : ");
