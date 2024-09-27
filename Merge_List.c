@@ -109,10 +109,6 @@ node *append(node *head1,node *head2,node *head3)
             t3->next = create3();
             t3->next->data = t2->data;
             t3 = t3->next;
-            //t3->data = t2->data;
-            //t3->next = create3();
-            //t3 = t3->next;
-            //t2 = t2->next;
         }
         return head3;
     }
@@ -129,6 +125,7 @@ int main()
         printf("3.Append List 3\n");
         printf("4.Display List 1 and List 2\n");
         printf("5.Display List 3\n");
+        printf("6.Exit\n");
         printf("Enter your choice : ");
         scanf("%d",&a);
         switch(a)
@@ -156,6 +153,8 @@ int main()
                 printf("LIST 3:\n");
                 display(head3);
                 break;
+            case 6:
+                exit(0);
             default:
                 printf("INVALID CHOICE!!!\n");
         }
