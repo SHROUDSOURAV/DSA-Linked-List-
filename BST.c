@@ -64,6 +64,17 @@ void Postorder(node *root)//function for postorder traversal
         printf("%d ",root->data);
     }
 }
+int Search(node *root,int data)//function to search node in the tree
+{
+    if(root == NULL)
+        return 0;
+    else if(data < root->data)
+        Search(root->left,data);
+    else if(data > root->data)
+        Search(root->right,data);
+    else
+        return 1;
+}
 int main()
 {
     int a;//switch variable
@@ -76,6 +87,7 @@ int main()
         printf("2.Preorder Traversal\n");
         printf("3.Inorder Traversal\n");
         printf("4.Postorder Traversal\n");
+        printf("5.Search\n");
         printf("Enter your choice : ");
         scanf("%d",&a);
         switch(a)
@@ -97,6 +109,14 @@ int main()
                 case 4:
                     Postorder(root);
                     break;
+                case 5:
+                    printf("Enter the data to search : ");
+                    scanf("%d",&data);
+                    if(Search(root,data) == 1)
+                        printf("Data FOUND!!!\n");
+                    else
+                        printf("Data NOT FOUND!!!\n"); 
+                    break;   
             default:
                 printf("INVALID CHOICE!!!\n");
         }
