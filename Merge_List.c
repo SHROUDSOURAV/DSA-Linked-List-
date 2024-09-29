@@ -54,39 +54,32 @@ node *create3()
     new_node3->next = NULL;
     return new_node3;
 }
+node *append2(node *head,node *head3)//function incase head1 or head2 is empty
+{
+    node *t,*t3;
+    if(head == NULL)
+    {
+        head3 = create3();
+        head3->data = head->data;
+        t3 = head3;
+        t = head;
+        while(t->next != NULL)
+        {
+            t = t->next;
+            t3->next = create3();
+            t3->next->data = t->data;
+            t3 = t3->next;
+        }
+        return head3;
+    }
+}
 node *append(node *head1,node *head2,node *head3)
 {
     node *t1,*t2,*t3;
     if(head1 == NULL)
-    {
-        head3 = create3();
-        head3->data = head2->data;
-        t3 = head3;
-        t2 = head2;
-        while(t2->next != NULL)
-        {
-            t2 = t2->next;
-            t3->next = create3();
-            t3->next->data = t2->data;
-            t3 = t3->next;
-        }
-        return head3;
-    }
-    if(head2 == NULL)
-    {
-        head3 = create3();
-        head3->data = head1->data;
-        t3 = head3;
-        t1 = head1;
-        while(t1->next != NULL)
-        {
-            t1 = t1->next;
-            t3->next = create3();
-            t3->next->data = t1->data;
-            t3 = t3->next;
-        }
-        return head3;
-    }
+        head3 = append2(head2,head3);
+    else if(head2 == NULL)
+        head3 = append2(head1,head3);
     else
     {
         head3 = create3();
