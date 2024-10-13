@@ -59,6 +59,7 @@ int dequeue()
         return r;
     else
     {
+        t--;
         r = arr[rear].value;
         rear--;
         return r;
