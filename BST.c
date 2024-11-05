@@ -75,6 +75,39 @@ int Search(node *root,int data)//function to search node in the tree
     else
         return 1;
 }
+node *dell(node *root,int data)//function to delete single child nodes / leaf nodes
+{
+    node *temp;
+    if(root == NULL)
+    {
+        printf("Data not Found!!!\n");
+        return NULL;
+    }
+    else if(data < root->data)
+        root->left = dell(root->left,data);
+    else if(data > root->data)
+        root->right = dell(root->right,data);
+    else
+    {
+        if(root->left == NULL && root->right == NULL)
+        {
+            free(root);
+            return NULL;
+        }
+        else if(root->left == NULL)
+        {
+            temp = root->right;
+            free(root);
+            return temp;
+        }
+        else if(root->right == NULL)
+        {
+            temp = root->left;
+            free(root);
+            return temp;
+        }
+    }
+}
 int main()
 {
     int a;//switch variable
@@ -88,6 +121,7 @@ int main()
         printf("3.Inorder Traversal\n");
         printf("4.Postorder Traversal\n");
         printf("5.Search\n");
+        printf("6.Delete Node(ONLY ONE CHILD/NO CHILD)\n");
         printf("Enter your choice : ");
         scanf("%d",&a);
         switch(a)
@@ -116,6 +150,12 @@ int main()
                         printf("Data FOUND!!!\n");
                     else
                         printf("Data NOT FOUND!!!\n"); 
+                    break;
+                case 6:
+                    printf("Enter the data to delete : ");
+                    scanf("%d",&data);
+                    root = dell(root,data);
+                    Inorder(root);
                     break;   
             default:
                 printf("INVALID CHOICE!!!\n");
