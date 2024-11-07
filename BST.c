@@ -75,37 +75,27 @@ int Search(node *root,int data)//function to search node in the tree
     else
         return 1;
 }
-node *dell(node *root,int data)//function to delete single child nodes / leaf nodes
+void dell(node **root,int data)//function to delete single child nodes / leaf nodes
 {
-    node *temp;
-    if(root == NULL)
+    if(*root == NULL)
     {
         printf("Data not Found!!!\n");
-        return NULL;
+        return;
     }
-    else if(data < root->data)
-        root->left = dell(root->left,data);
-    else if(data > root->data)
-        root->right = dell(root->right,data);
+    else if(data < (*root)->data)
+        dell(&(*root)->left,data);
+    else if(data > (*root)->data)
+        dell(&(*root)->right,data);
     else
     {
-        if(root->left == NULL && root->right == NULL)
-        {
-            free(root);
-            return NULL;
-        }
-        else if(root->left == NULL)
-        {
-            temp = root->right;
-            free(root);
-            return temp;
-        }
-        else if(root->right == NULL)
-        {
-            temp = root->left;
-            free(root);
-            return temp;
-        }
+        node *temp = *root;
+        if((*root)->left == NULL && (*root)->right == NULL)
+            *root = NULL;
+        else if((*root)->left == NULL)
+            *root = (*root)->right;
+        else if((*root)->right == NULL)
+            *root = (*root)->left;
+        free(temp);
     }
 }
 int main()
@@ -154,7 +144,7 @@ int main()
                 case 6:
                     printf("Enter the data to delete : ");
                     scanf("%d",&data);
-                    root = dell(root,data);
+                    dell(&root,data);  
                     Inorder(root);
                     break;   
             default:
